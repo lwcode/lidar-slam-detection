@@ -59,9 +59,16 @@ Ubuntu20.04, Python3.8, Eigen 3.3.7, Ceres 1.14.0, Protobuf 3.8.0, NLOPT 2.4.2, 
 NVIDIA Container Toolkit is needed to install firstly [Installation](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html).
 
 A x86_64 docker image is provided to test.
+- for GPU:
 ```bash
 sudo docker pull 15liangwang/lsd-cuda118 # sudo docker pull 15liangwang/lsd-cpu, if you don't have GPU
 sudo docker run --gpus all -it -d --net=host --privileged --shm-size=4g --name="LSD" -v /media:/root/exchange 15liangwang/lsd-cuda118
+sudo docker exec -it LSD /bin/bash
+```
+- for CPU:
+```bash
+sudo docker pull 15liangwang/lsd-cpu
+sudo docker run -it -d --net=host --privileged --shm-size=4g --name="LSD" -v /media:/root/exchange 15liangwang/lsd-cpu
 sudo docker exec -it LSD /bin/bash
 ```
 
